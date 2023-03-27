@@ -14,6 +14,7 @@ public class App {
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         String body = response.body();
         System.out.println(body);
+        System.out.println("teste");
 
     }
 }
