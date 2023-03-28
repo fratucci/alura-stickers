@@ -21,10 +21,10 @@ public class App {
         // extrair dados qu interessam
         JsonParser parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
-
+        System.out.println("\u001b[37m \u001b[44m Alura \u001b[m");
         // exibir dados
         for (Map<String, String> filme : listaDeFilmes) {
-            System.out.println(filme.get("title"));
+            System.out.println("\u001b[31m \u001b[43m" + filme.get("title") + "\u001b[m");
             System.out.println(filme.get("image"));
             System.out.println(filme.get("imDbRating"));
             System.out.println();
