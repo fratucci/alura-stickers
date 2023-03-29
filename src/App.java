@@ -7,7 +7,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        API api = API.NASA;
+        API api = API.IMBD_SERIE;
         ExtratorDeConteudo extrator = api.getExtrator();
         String url = api.getUrl();
 

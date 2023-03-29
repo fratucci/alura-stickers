@@ -1,6 +1,8 @@
 public enum API {
 
-  IMDB("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json",
+  IMDB_MOVIE("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json",
+      new ExtratorDeConteudoDoIMDB()),
+  IMBD_SERIE("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopTVs.json",
       new ExtratorDeConteudoDoIMDB()),
   NASA("https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD.json",
       new ExtratorDeConteudoDaNasa());
