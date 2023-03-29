@@ -49,9 +49,6 @@ public class GeradoraDeFigurinha {
     int x = (w - fm.stringWidth(s)) / 2;
     int y = h - 100;
     g.drawString(s, x, y);
-    // int center = (largura - graphics.getFontMetrics().stringWidth(palavraClass))
-    // / 2;
-    // graphics.drawString(palavraClass, center, novaAltura - 100);
   }
 
 }

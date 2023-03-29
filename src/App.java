@@ -10,11 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 public class App {
-    private static File file;
 
     public static void main(String[] args) throws Exception {
 
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        // String url =
+        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
+        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD.json";
         URI endereco = URI.create(url);
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder(endereco).GET().build();
@@ -24,30 +25,30 @@ public class App {
 
         // extrair dados qu interessam
         JsonParser parser = new JsonParser();
-        List<Map<String, String>> listaDeFilmes = parser.parse(body);
+        List<Map<String, String>> listaDeConteudos = parser.parse(body);
 
         File diretorio = new File("saida/");
         diretorio.mkdir();
 
         // exibir dados
-        for (Map<String, String> filme : listaDeFilmes) {
+        for (Map<String, String> conteudo : listaDeConteudos) {
 
-            String urlImagem = filme.get("image");
+            String urlImagem = conteudo.get("url");
             InputStream inputStream = new URL(urlImagem).openStream();
 
-            String titulo = (filme.get("title"));
+            String titulo = (conteudo.get("title"));
             String nomeArquivo = diretorio + "/" + titulo.replace(":", "-") + ".png";
 
             GeradoraDeFigurinha geradora = new GeradoraDeFigurinha();
             geradora.cria(inputStream, nomeArquivo);
 
             System.out.println("\u001b[1mTítulo:\u001b[m\u001b[31m \u001b[43m" + titulo + "\u001b[m");
-            System.out.println(filme.get("image"));
-            System.out.print("\u001b[1mNota: \u001b[m" + filme.get("imDbRating") + " ");
-            Integer nota = Integer.valueOf(filme.get("imDbRating").substring(0, 1));
-            for (int i = 0; i <= nota; i++) {
-                System.out.print("⭐");
-            }
+            // System.out.println(filme.get("image"));
+            // System.out.print("\u001b[1mNota: \u001b[m" + filme.get("imDbRating") + " ");
+            // Integer nota = Integer.valueOf(filme.get("imDbRating").substring(0, 1));
+            // for (int i = 0; i <= nota; i++) {
+            // System.out.print("⭐");
+            // }
             System.out.println();
             System.out.println();
 
