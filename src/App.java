@@ -35,7 +35,7 @@ public class App {
             GeradoraDeFigurinha geradora = new GeradoraDeFigurinha();
             geradora.cria(inputStream, nomeArquivo);
 
-            System.out.println("\u001b[1mTítulo:\u001b[m\u001b[31m \u001b[43m" + filme.get("title") + "\u001b[m");
+            System.out.println("\u001b[1mTítulo:\u001b[m\u001b[31m \u001b[43m" + titulo + "\u001b[m");
             System.out.println(filme.get("image"));
             System.out.print("\u001b[1mNota: \u001b[m" + filme.get("imDbRating") + " ");
             Integer nota = Integer.valueOf(filme.get("imDbRating").substring(0, 1));
