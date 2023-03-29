@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public class App {
+    private static File file;
+
     public static void main(String[] args) throws Exception {
 
         String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
@@ -23,6 +26,9 @@ public class App {
         JsonParser parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
+        File diretorio = new File("saida/");
+        diretorio.mkdir();
+
         // exibir dados
         for (Map<String, String> filme : listaDeFilmes) {
 
@@ -30,7 +36,7 @@ public class App {
             InputStream inputStream = new URL(urlImagem).openStream();
 
             String titulo = (filme.get("title"));
-            String nomeArquivo = "saida/" + titulo.replace(":", "-") + ".png";
+            String nomeArquivo = diretorio + "/" + titulo.replace(":", "-") + ".png";
 
             GeradoraDeFigurinha geradora = new GeradoraDeFigurinha();
             geradora.cria(inputStream, nomeArquivo);
