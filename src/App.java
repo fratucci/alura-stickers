@@ -1,3 +1,5 @@
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -5,7 +7,8 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
-import java.util.jar.JarEntry;
+
+import javax.imageio.ImageIO;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -21,7 +24,7 @@ public class App {
         // extrair dados qu interessam
         JsonParser parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
-        System.out.println("\u001b[37m \u001b[44m Alura \u001b[m");
+
         // exibir dados
         for (Map<String, String> filme : listaDeFilmes) {
             System.out.println("\u001b[1mTítulo:\u001b[m\u001b[31m \u001b[43m" + filme.get("title") + "\u001b[m");
@@ -36,5 +39,6 @@ public class App {
 
         }
 
+        BufferedImage img = ImageIO.read(new File("entrada/filme.jpg"));
     }
 }
