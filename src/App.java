@@ -7,11 +7,9 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
-        // String url =
-        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/NASA-APOD.json";
-        // ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
+        API api = API.NASA;
+        ExtratorDeConteudo extrator = api.getExtrator();
+        String url = api.getUrl();
 
         ClienteHttp http = new ClienteHttp();
         String json = http.buscaDados(url);
