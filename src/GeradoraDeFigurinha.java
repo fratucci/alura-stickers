@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -30,14 +32,26 @@ public class GeradoraDeFigurinha {
     graphics.drawImage(imgOriginal, 0, 0, null);
 
     // escrever na imagem
-    Font myFont = new Font("Serif", Font.BOLD, 80);
+    Font myFont = new Font("Impact", Font.BOLD, 80);
     graphics.setFont(myFont);
-    graphics.setColor(Color.GREEN);
-    graphics.drawString("TOPZERA", 200, novaAltura - 100);
+    graphics.setColor(Color.YELLOW);
+    String palavraClass = "TOPZERA";
+
+    drawCenteredString(palavraClass, largura, novaAltura, graphics);
 
     // escrever nova imagem no arquivo
     ImageIO.write(novaImagem, "png", new File(nomeArquivo));
 
+  }
+
+  public void drawCenteredString(String s, int w, int h, Graphics g) {
+    FontMetrics fm = g.getFontMetrics();
+    int x = (w - fm.stringWidth(s)) / 2;
+    int y = h - 100;
+    g.drawString(s, x, y);
+    // int center = (largura - graphics.getFontMetrics().stringWidth(palavraClass))
+    // / 2;
+    // graphics.drawString(palavraClass, center, novaAltura - 100);
   }
 
 }
