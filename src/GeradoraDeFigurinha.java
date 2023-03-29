@@ -4,18 +4,22 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
 public class GeradoraDeFigurinha {
 
-  public void cria() throws IOException {
+  public void cria(InputStream inputStream, String nomeArquivo) throws IOException {
 
     // leitura
+    // imgOriginal = ImageIO.read(new File("entrada/Filme.jpg"));
     BufferedImage imgOriginal = null;
+    // InputStream inputStream = new URL(
+    // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies_1.jpg").openStream();
+    imgOriginal = ImageIO.read(inputStream);
 
-    imgOriginal = ImageIO.read(new File("entrada/Filme.jpg"));
-
+    // cria nova imagem
     int largura = imgOriginal.getWidth();
     int altura = imgOriginal.getHeight();
     int novaAltura = altura + 200;
@@ -32,12 +36,8 @@ public class GeradoraDeFigurinha {
     graphics.drawString("TOPZERA", 200, novaAltura - 100);
 
     // escrever nova imagem no arquivo
-    ImageIO.write(novaImagem, "png", new File("saida/figura.png"));
+    ImageIO.write(novaImagem, "png", new File(nomeArquivo));
 
   }
 
-  public static void main(String[] args) throws IOException {
-    var gerador = new GeradoraDeFigurinha();
-    gerador.cria();
-  }
 }

@@ -1,14 +1,12 @@
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 import java.util.Map;
-
-import javax.imageio.ImageIO;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -27,6 +25,16 @@ public class App {
 
         // exibir dados
         for (Map<String, String> filme : listaDeFilmes) {
+
+            String urlImagem = filme.get("image");
+            InputStream inputStream = new URL(urlImagem).openStream();
+
+            String titulo = (filme.get("title"));
+            String nomeArquivo = "saida/" + titulo.replace(":", "-") + ".png";
+
+            GeradoraDeFigurinha geradora = new GeradoraDeFigurinha();
+            geradora.cria(inputStream, nomeArquivo);
+
             System.out.println("\u001b[1mTítulo:\u001b[m\u001b[31m \u001b[43m" + filme.get("title") + "\u001b[m");
             System.out.println(filme.get("image"));
             System.out.print("\u001b[1mNota: \u001b[m" + filme.get("imDbRating") + " ");
@@ -39,6 +47,5 @@ public class App {
 
         }
 
-        BufferedImage img = ImageIO.read(new File("entrada/filme.jpg"));
     }
 }
