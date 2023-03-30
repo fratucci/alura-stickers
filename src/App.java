@@ -7,7 +7,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        API api = API.IMBD_SERIE;
+        API api = API.LINGUAGEM;
         ExtratorDeConteudo extrator = api.getExtrator();
         String url = api.getUrl();
 
