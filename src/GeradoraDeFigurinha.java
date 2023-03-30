@@ -32,7 +32,9 @@ public class GeradoraDeFigurinha {
     graphics.drawImage(imgOriginal, 0, 0, null);
 
     // escrever na imagem
-    Font myFont = new Font("Impact", Font.BOLD, 80);
+    int fontSize = largura <= 256 ? 40 : 80;
+
+    Font myFont = new Font("Impact", Font.BOLD, fontSize);
     graphics.setFont(myFont);
     graphics.setColor(Color.YELLOW);
     String palavraClass = "TOPZERA";
